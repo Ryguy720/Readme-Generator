@@ -85,6 +85,10 @@ ${response.usage}
 ${response.email}
 `
 console.log(readmetxt)
+fs.writeFileSync("README.md",readmetxt,(err,data)=>{
+  if(err)throw err
+})
+console.log("Readme generator")
     })
   };
 
