@@ -7,18 +7,18 @@ const promptUser = () => {
     return inquirer.prompt([
       {
         type: 'input',
-        name: 'name',
-        message: 'What is your name?',
+        name: 'title',
+        message: 'What is your project title?',
       },
       {
         type: 'input',
-        name: 'location',
-        message: 'Where are you from?',
+        name: 'Description',
+        message: 'What is your project description?',
       },
       {
         type: 'input',
-        name: 'hobby',
-        message: 'What is your favorite hobby?',
+        name: 'Contributor',
+        message: 'Contributors to the project?',
       },
       {
         type: 'input',
@@ -35,7 +35,25 @@ const promptUser = () => {
         name: 'linkedin',
         message: 'Enter your LinkedIn URL.',
       },
-    ]);
+    ]).then(response => {
+      var readmetxt = `
+# Title
+${response.title}
+
+## Description
+${response.description}
+
+### Coded By:
+${response.contributors}
+
+### Table of Contents
+* [installation](#installation)
+* [Testing](#Testing)
+#### Installation
+${response.installation}
+`
+console.log(readmetxt)
+    })
   };
 
 // TODO: Create a function to write README file
@@ -46,3 +64,4 @@ function init() {}
 
 // Function call to initialize app
 init();
+promptUser();
