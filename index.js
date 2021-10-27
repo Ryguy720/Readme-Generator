@@ -12,18 +12,18 @@ const promptUser = () => {
       },
       {
         type: 'input',
-        name: 'Description',
+        name: 'description',
         message: 'What is your project description?',
       },
       {
         type: 'input',
-        name: 'Contributor',
+        name: 'contributors',
         message: 'Contributors to the project?',
       },
       {
         type: 'input',
-        name: 'food',
-        message: 'What is your favorite food?',
+        name: 'installation',
+        message: 'Installation instructions?',
       },
       {
         type: 'input',
@@ -32,9 +32,26 @@ const promptUser = () => {
       },
       {
         type: 'input',
-        name: 'linkedin',
-        message: 'Enter your LinkedIn URL.',
+        name: 'testing',
+        message: 'test instructions',
       },
+      {
+        type: 'input',
+        name: 'usage',
+        message: 'usage information?',
+      },
+      {
+        type: 'list',
+        name: 'license',
+        message: 'choose a license?',
+        choices: ["MIT","ISC","APACHE2.0","GPL"]
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'Email?',
+      },
+  
     ]).then(response => {
       var readmetxt = `
 # Title
@@ -49,8 +66,23 @@ ${response.contributors}
 ### Table of Contents
 * [installation](#installation)
 * [Testing](#Testing)
+* [Usage](#Usage)
+* [License](#License)
+* [Github](#Github)
+* [Email](#Email)
 #### Installation
 ${response.installation}
+
+#### Testing
+${response.testing}
+#### Usage
+${response.usage}
+#### License
+![GitHub license](https://img.shields.io/badge/license-${response.license}-blue.svg)
+#### Github
+[GitHub](https://github.com/${response.github})
+#### Email
+${response.email}
 `
 console.log(readmetxt)
     })
